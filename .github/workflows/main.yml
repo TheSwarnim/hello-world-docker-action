@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: theswarnim/hello-world-docker-action@v1
+        uses: actions/hello-world-docker-action@v2 
         with:
           who-to-greet: 'Cyberpunk'
       # Use the output from the `hello` step
