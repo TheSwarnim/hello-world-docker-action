@@ -9,4 +9,5 @@ FROM alpine:3.19
 RUN apk --no-cache add ca-certificates
 WORKDIR /app
 COPY --from=builder /app/hello-world /app/
-ENTRYPOINT ./hello-world
+#ENTRYPOINT ./hello-world
+CMD sh -c 'pwd; ls -ltrh; ./hello-world'
