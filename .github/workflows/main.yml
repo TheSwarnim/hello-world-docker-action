@@ -9,4 +9,4 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Run the hello world action
-        uses: theswarnim/hello-world-docker-action@v6
+        uses: theswarnim/hello-world-docker-action@v7
