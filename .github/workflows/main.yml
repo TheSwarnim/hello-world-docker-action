@@ -1,25 +1,12 @@
+name: Example Workflow
+
 on: [push]
 
 jobs:
-  hello_world_job:
+  runHelloWorld:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: actions/hello-world-docker-action@v2 
-        with:
-          who-to-greet: 'Cyberpunk'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-
-      - name: Containerized Build
-        uses: ./.github/actions/my-container-action
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}
-
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Run the hello world action
+        uses: theswarnim/hello-world-docker-action@v3

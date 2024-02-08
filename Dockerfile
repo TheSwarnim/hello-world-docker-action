@@ -1,8 +1,10 @@
-# Container image that runs your code
-FROM alpine:3.10
+FROM golang:1.17
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+WORKDIR /app
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+ADD . /app
+
+RUN go get -d -v
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o hello-world .
+
+ENTRYPOINT ["./hello-world"]
